@@ -66,7 +66,7 @@ const Herosection = () => {
       {/* Featured Categories Continuous Scroll */}
       <section className="w-full bg-[#F0F8EC] py-14 px-4 md:px-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-700 mb-10">
-          Categories of the Month
+          Plants You Love
         </h2>
 
         <Swiper

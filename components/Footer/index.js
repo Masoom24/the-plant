@@ -61,10 +61,7 @@ const Footer = () => {
 
       <nav>
         <h6 className=" text-black font-bold text-2xl">Categories</h6>
-        <a className="link link-hover text-black">Branding</a>
-        <a className="link link-hover text-black">Design</a>
-        <a className="link link-hover text-black">Marketing</a>
-        <a className="link link-hover text-black">Advertisement</a>
+        <a className="link link-hover text-black">Best Plant</a>
       </nav>
 
       <nav>

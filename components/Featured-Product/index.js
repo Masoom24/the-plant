@@ -51,11 +51,10 @@ const Featured = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
-            Categories of The Month
+            New Plnats
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Discover our most popular collections this season. Each category is
-            carefully curated to bring you the best options.
+            Discover our most popular collections this season.
           </p>
         </div>
 
