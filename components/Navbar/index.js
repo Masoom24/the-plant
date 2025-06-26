@@ -15,7 +15,6 @@ const Navbar = () => {
             alt="Logo"
             className="w-20 h-16 object-contain"
           />
-          <span className="text-xl font-bold">GreenGarden</span>
         </div>
 
         {/* Hamburger icon */}
