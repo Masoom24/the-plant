@@ -15,28 +15,28 @@ const CategorySection = () => {
       id: 2,
       name: "Seeds Variety",
       description: "Wide range of plant seeds",
-      image: "/seeds/1.jpg", // Image path
+      image: "/seeds/images.jpg", // Image path
       color: "from-lime-500 to-green-600",
     },
     {
       id: 3,
       name: "Plant Types",
       description: "Indoor, outdoor & specialty plants",
-      image: "/categories/shopping.webp", // Image path
+      image: "/seeds/images1.jpeg", // Image path
       color: "from-emerald-500 to-teal-600",
     },
     {
       id: 4,
       name: "Pots Collection",
       description: "Various sizes and materials",
-      image: "/categories/4.jpeg", // Image path
+      image: "/seeds/images2.jpg", // Image path
       color: "from-amber-500 to-orange-600",
     },
     {
       id: 5,
       name: "Gardening Accessories",
       description: "Supports, gloves, decorations & more",
-      image: "/categories/shopping(1).jpg", // Image path
+      image: "/seeds/images (1).jpg", // Image path
       color: "from-cyan-500 to-blue-600",
     },
   ];
