@@ -120,5 +120,4 @@ const GardeningTools = () => {
     </div>
   );
 };
-
 export default GardeningTools;

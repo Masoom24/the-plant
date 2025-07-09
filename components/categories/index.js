@@ -154,11 +154,7 @@ const CategorySection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.5 }}
           className="text-center mt-16"
-        >
-          <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-full hover:from-emerald-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            View All Categories
-          </button>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );

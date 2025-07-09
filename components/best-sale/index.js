@@ -46,61 +46,6 @@ const BestSale = () => {
       discount: 33,
       image: "/deal/img (7).jpg",
     },
-    {
-      id: 5,
-      name: "ZZ Plant",
-      description: "Nearly indestructible plant with glossy leaves",
-      price: 36.99,
-      originalPrice: 59.99,
-      rating: 4.6,
-      reviews: 112,
-      discount: 38,
-      image: "/deal/img (8).jpg",
-    },
-    {
-      id: 6,
-      name: "Pothos Golden",
-      description: "Trailing vine perfect for shelves and hanging baskets",
-      price: 22.99,
-      originalPrice: 34.99,
-      rating: 4.9,
-      reviews: 201,
-      image: "/deal/img (9).jpg",
-      discount: 34,
-    },
-    {
-      id: 7,
-      name: "Rubber Plant",
-      description: "Bold plant with deep green, glossy leaves",
-      price: 48.5,
-      originalPrice: 69.99,
-      rating: 4.4,
-      reviews: 78,
-      image: "/deal/img (10).jpg",
-      discount: 31,
-    },
-    {
-      id: 8,
-      name: "Philodendron",
-      description: "Fast-growing vine with heart-shaped leaves",
-      price: 27.99,
-      originalPrice: 39.99,
-      rating: 4.7,
-      reviews: 132,
-      image: "/deal/img (11).jpg",
-      discount: 30,
-    },
-    {
-      id: 9,
-      name: "Aloe Vera",
-      description: "Healing succulent with medicinal properties",
-      price: 19.99,
-      originalPrice: 29.99,
-      rating: 4.8,
-      reviews: 189,
-      image: "/deal/img (12).jpg",
-      discount: 33,
-    },
   ];
 
   // Function to render star ratings
@@ -235,19 +180,13 @@ const BestSale = () => {
                     </svg>
                     Add to Cart
                   </button>
-                  <button className="bg-amber-500 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-amber-600 transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
+                  {/* <button className="bg-amber-500 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-amber-600 transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
                     Buy Now
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <button className="px-8 py-3.5 bg-gradient-to-r from-emerald-600 to-green-700 text-white font-bold rounded-full hover:from-emerald-700 hover:to-green-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            View All Deals
-          </button>
         </div>
       </div>
     </div>

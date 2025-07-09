@@ -10,18 +10,18 @@ import "swiper/css/free-mode";
 const heroImages = ["img3.jpg", "img1.jpg", "img2.jpg", "img4.jpg"];
 
 const featuredItems = [
-  { img: "/Featured/img1.webp", title: "Indoor Plants" },
-  { img: "/Featured/img2.webp", title: "Outdoor Plants" },
-  { img: "/Featured/img3.webp", title: "Succulents" },
-  { img: "/Featured/img1 (1).jpg", title: "Air Purifiers" },
-  { img: "/Featured/img1 (2).jpg", title: "Low Maintenance" },
-  { img: "/Featured/img1 (3).jpg", title: "Flowering Plants" },
-  { img: "/Featured/img1 (4).jpg", title: "Medicinal Plants" },
-  { img: "/Featured/img1 (5).jpg", title: "Desk Plants" },
-  { img: "/Featured/img1 (6).jpg", title: "Herbs" },
-  { img: "/Featured/img1 (7).jpg", title: "Cactus" },
-  { img: "/Featured/img1 (8).jpg", title: "Bonsai" },
-  { img: "/Featured/img1 (9).jpg", title: "Hanging Pots" },
+  { img: "/Featured/img1.webp" },
+  { img: "/Featured/img2.webp" },
+  { img: "/Featured/img3.webp" },
+  { img: "/Featured/img1 (1).jpg" },
+  { img: "/Featured/img1 (2).jpg" },
+  { img: "/Featured/img1 (3).jpg" },
+  { img: "/Featured/img1 (4).jpg" },
+  { img: "/Featured/img1 (5).jpg" },
+  { img: "/Featured/img1 (6).jpg" },
+  { img: "/Featured/img1 (7).jpg" },
+  { img: "/Featured/img1 (8).jpg" },
+  { img: "/Featured/img1 (9).jpg" },
 ];
 
 const Herosection = () => {
@@ -51,7 +51,6 @@ const Herosection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
         {/* Overlay Title */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-md">
@@ -62,7 +61,6 @@ const Herosection = () => {
           </p>
         </div>
       </section>
-
       {/* Featured Categories Continuous Scroll */}
       <section className="w-full bg-[#F0F8EC] py-14 px-4 md:px-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-700 mb-10">

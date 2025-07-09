@@ -5,42 +5,42 @@ const Featured = () => {
     {
       id: 1,
       imgSrc: "/Categories/img1.jpg",
-      title: "Summer Collection",
+      title: " Rubber Plant",
       price: 89.99,
       reviews: 24,
     },
     {
       id: 2,
       imgSrc: "/Categories/img2.jpg",
-      title: "Winter Essentials",
+      title: " Bird of Paradise ",
       price: 124.99,
       reviews: 36,
     },
     {
       id: 3,
       imgSrc: "/Categories/img3.jpg",
-      title: "Sports Gear",
+      title: "Spider Plant ",
       price: 59.99,
       reviews: 42,
     },
     {
       id: 4,
       imgSrc: "/Categories/img4.jpg",
-      title: "Formal Wear",
+      title: "ZZ Plant",
       price: 149.99,
       reviews: 18,
     },
     {
       id: 5,
       imgSrc: "/Categories/img5.jpg",
-      title: "Casual Outfits",
+      title: "Money plant",
       price: 79.99,
       reviews: 31,
     },
     {
       id: 6,
       imgSrc: "/Categories/img6.jpg",
-      title: "Accessories",
+      title: "Euphorbia ",
       price: 39.99,
       reviews: 57,
     },
@@ -108,12 +108,6 @@ const Featured = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <button className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-full hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl">
-            View All Categories
-          </button>
         </div>
       </div>
     </div>
