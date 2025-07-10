@@ -1,6 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import useCartStore from "../store/cartStore";
 
 const BestSale = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const addToCart = useCartStore((state) => state.addToCart);
+
   const products = [
     {
       id: 1,
@@ -48,7 +56,23 @@ const BestSale = () => {
     },
   ];
 
-  // Function to render star ratings
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setIsModalOpen(false);
+  };
+
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage("");
+    }, 2500);
+  };
+
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -56,38 +80,17 @@ const BestSale = () => {
 
     for (let i = 1; i <= 5; i++) {
       if (i <= fullStars) {
-        stars.push(
-          <svg
-            key={i}
-            className="w-4 h-4 text-amber-400 fill-current"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-          </svg>
-        );
+        stars.push(<span key={i}>⭐</span>);
       } else if (i === fullStars + 1 && hasHalfStar) {
-        stars.push(
-          <svg
-            key={i}
-            className="w-4 h-4 text-amber-400 fill-current"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z" />
-          </svg>
-        );
+        stars.push(<span key={i}>⭐</span>);
       } else {
         stars.push(
-          <svg
-            key={i}
-            className="w-4 h-4 text-gray-300 fill-current"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-          </svg>
+          <span key={i} className="text-gray-300">
+            ⭐
+          </span>
         );
       }
     }
-
     return stars;
   };
 
@@ -106,88 +109,136 @@ const BestSale = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-8">
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 group"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group"
             >
               <div className="relative">
-                {/* Discount badge */}
-                <div className="absolute top-4 left-4 bg-amber-500 text-white font-bold text-sm px-3 py-1 rounded-full z-10 shadow-md">
+                <div className="absolute top-4 left-4 bg-amber-500 text-white font-bold text-sm px-3 py-1 rounded-full z-10">
                   {product.discount}% OFF
                 </div>
-
-                {/* Image with hover effect */}
                 <div className="h-60 overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
               </div>
 
               <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h2 className="text-xl font-bold text-green-900 group-hover:text-emerald-700 transition-colors">
+                <div className="flex justify-between mb-3">
+                  <h2 className="text-xl font-bold text-green-900">
                     {product.name}
                   </h2>
-
-                  <div className="flex flex-col items-end">
-                    <div className="text-lg font-bold text-emerald-700">
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-emerald-700">
                       ${product.price.toFixed(2)}
-                    </div>
-                    <div className="text-sm text-gray-500 line-through">
+                    </p>
+                    <p className="text-sm text-gray-500 line-through">
                       ${product.originalPrice.toFixed(2)}
-                    </div>
+                    </p>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm mb-4 h-12 overflow-hidden">
+                <p className="text-sm text-gray-600 mb-3">
                   {product.description}
                 </p>
 
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex justify-between text-sm text-gray-500 mb-5">
                   <div className="flex items-center">
-                    <div className="flex mr-1">
-                      {renderStars(product.rating)}
-                    </div>
-                    <span className="text-gray-500 text-sm">
-                      {product.rating.toFixed(1)}
-                    </span>
+                    {renderStars(product.rating)}
                   </div>
-                  <span className="text-gray-500 text-sm">
-                    ({product.reviews} reviews)
-                  </span>
+                  <span>({product.reviews} reviews)</span>
                 </div>
 
                 <div className="flex space-x-3">
-                  <button className="flex-1 bg-emerald-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-emerald-700 transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 mr-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
+                  <button
+                    onClick={() => {
+                      addToCart(product);
+                      showToast("🛒 Added to cart!");
+                    }}
+                    className="flex-1 bg-emerald-600 text-white py-2.5 px-4 rounded-lg hover:bg-emerald-700 transition"
+                  >
                     Add to Cart
                   </button>
-                  {/* <button className="bg-amber-500 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-amber-600 transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                    Buy Now
-                  </button> */}
+                  <button
+                    onClick={() => openModal(product)}
+                    className="bg-amber-500 text-white py-2.5 px-4 rounded-lg hover:bg-amber-600 transition"
+                  >
+                    Quick View
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Modal */}
+        {isModalOpen && selectedProduct && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+            <div className="bg-white rounded-xl max-w-2xl w-full p-6 relative shadow-xl overflow-hidden">
+              <button
+                onClick={closeModal}
+                className="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-2xl font-bold"
+              >
+                &times;
+              </button>
+
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="w-full md:w-1/2 overflow-hidden">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                </div>
+
+                <div className="flex-1">
+                  <h2 className="text-2xl font-bold text-green-800 mb-2">
+                    {selectedProduct.name}
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-2">
+                    {selectedProduct.description}
+                  </p>
+                  <div className="text-lg font-bold text-emerald-700 mb-2">
+                    ${selectedProduct.price.toFixed(2)}
+                    <span className="text-sm text-gray-400 line-through ml-2">
+                      ${selectedProduct.originalPrice.toFixed(2)}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-700 mb-1">
+                    <strong>Rating:</strong> {selectedProduct.rating.toFixed(1)}{" "}
+                    ⭐
+                  </p>
+                  <p className="text-sm text-gray-700 mb-4">
+                    <strong>Reviews:</strong> {selectedProduct.reviews}
+                  </p>
+
+                  <button
+                    onClick={() => {
+                      addToCart(selectedProduct);
+                      closeModal();
+                      showToast("🛒 Added to cart!");
+                    }}
+                    className="bg-emerald-600 text-white px-5 py-2 rounded hover:bg-emerald-700 transition"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toast Message (Top Right) */}
+        {toastMessage && (
+          <div className="fixed top-5 right-5 bg-green-400 text-white px-5 py-3 rounded-lg shadow-lg z-[9999] transition-opacity duration-300">
+            {toastMessage}
+          </div>
+        )}
       </div>
     </div>
   );

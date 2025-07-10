@@ -1,17 +1,16 @@
-import BestSale from "@/components/best-sale";
-import Cart from "@/components/card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import History from "@/components/order-history";
 import React from "react";
 
-const Page = () => {
+const page = () => {
   return (
     <div>
       <Navbar />
-      <BestSale />
+      <History />
       <Footer />
     </div>
   );
 };
 
-export default Page;
+export default page;
